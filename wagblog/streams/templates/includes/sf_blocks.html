@@ -1,0 +1,17 @@
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% if blocks %}
+
+                        {% for block in blocks %}
+                            {% if block.block_type == 'heading' %}
+                                <h1>{{ block.value }}</h1>
+                            {% elif block.block_type == 'image' %}
+                                {% image block.value max-1280x640 class="img-responsive center-block wow slideInRight" %}
+                            {% else %}
+                               <section class="block-{{ block.block_type }}">
+                                   {{ block }}
+
+                            {% endif %}
+                        {% endfor %}
+
+{% endif %}

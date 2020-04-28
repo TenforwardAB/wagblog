@@ -1,0 +1,15 @@
+{% load static %}
+    <td bgcolor="#FFFFFF" style="line-height:10px;" colspan=3>&nbsp;</td>
+    <div class="detail-quate">
+        <div class="row">
+            <div class="col-md-1">
+                <img src="{% static  'images/detail-quote.png'%}" alt="quote" class="img-responsive detail-quote-img">
+            </div>
+            <div class="col-md-11">
+                <blockquote>
+                    <p class="detail-quate-h"><i>{{ self.quote }}</i></p>
+                    <footer class="detail-frank">{{  self.author }} </footer>
+                </blockquote>
+            </div>
+        </div>
+    </div>

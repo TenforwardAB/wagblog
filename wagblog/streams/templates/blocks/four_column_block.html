@@ -1,0 +1,53 @@
+    <!--Four Column-->
+    <section class="most-popular" id="web_hosting">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1 class="text-center our-pricing-h">{{ self.block_title }}</h1>
+                    <p class="text-center our-pricing-p">{{ self.block_subtitle }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row db-padding-btm db-attached">
+                <div class="col-md-3">
+                   {% include "includes/sf_fourblocks.html" with blocks=self.first_column only %}
+                </div>
+                <div class="col-md-3">
+                   {% include "includes/sf_fourblocks.html" with blocks=self.second_column only %}
+                </div>
+                <div class="col-md-3">
+                   {% include "includes/sf_fourblocks.html" with blocks=self.third_column only %}
+                </div>
+                <div class="col-md-3">
+                   {% include "includes/sf_fourblocks.html" with blocks=self.fourth_column only %}
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Four Column ends-->
+
+
+
+
+
+{% comment %}
+
+<section class="shared-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-6">
+                    {% include "includes/sf_blocks.html" with blocks=self.left_column only %}
+                </div>
+                <div class="col-md-6">
+                    {% include "includes/sf_blocks.html" with blocks=self.right_column only %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% endcomment %}

@@ -1,0 +1,111 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailuserbar blogapp_tags el_pagination_tags menu_tags wagtailmarkdown compress wtm_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}{{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}{% endif %}{% endblock title %}</title>
+    <meta name="description" content="{% block meta_description %}{{ blog_page.search_description }}{% endblock meta_description %}"/>
+
+    <link rel="canonical" href="{% block canonical %}{% canonical_url %}{% endblock canonical %}"/>
+
+    {% compress css %}
+    <link type="text/x-scss" href="{% static 'blog/scss/blog.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
+
+  </head>
+
+  <body>
+    {% wtm_cookie_bar %}
+    {% wagtailuserbar %}
+
+    <!-- Navigation & Header-->
+   <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header expand-nav">
+                    <a class ="navbar-brand" href="{% canonical_url %}">
+                        <img src="{%  static 'blog/images/header/wagblog_181_white.png' %}" alt="logo" class="d-inline-block align-top ">
+                    </a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="navbar-navbar">
+                    {% main_menu template="menu/main_menu.html" %}
+                </div>
+                <!-- /.navbar-collapse -->
+            </nav>
+        </div>
+   </header>
+     <!--Header & Navigation section end-->
+
+    <!-- HOME -->
+
+    {% block maincontent %}
+
+            {% block content %}
+
+            {% endblock %}
+
+    {% endblock %}
+
+
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 2019<script>new Date().getFullYear()>2019&&document.write("-"+new Date().getFullYear());</script> Built with <a href="https://www.wagblog.org/" >Wagblog</a>
+        </p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+
+        <!--Back to top button-->
+    <a href="#" id="back-to-top" title="Back to top" class="arrow-btn btn btn-default">
+        <i class="mdi-hardware-keyboard-arrow-up arrow-footer"></i>
+    </a>
+    <!--Back to top button end-->
+    <!-- Carousel -->
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <!--jquery js file-->
+    <script type="text/javascript" src="{% static 'blog/js/jquery-1.11.3.min.js' %}"></script>
+    <!--bootstrap js files-->
+    <script type="text/javascript" src="{% static 'blog/js/bootstrap.min.js' %}"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script type="text/javascript" src="{% static 'blog/js/material.min.js' %}"></script>
+     <script type="text/javascript" src="{% static 'blog/js/ripples.min.js' %}"></script>
+    <!-- custom js file-->
+    <script type="text/javascript" src="{% static 'blog/js/custom.js' %}"></script>
+    <!-- WOW -->
+    <script type="text/javascript" src="{% static 'blog/js/wow/wow.min.js' %}"></script>
+    <!--tooltip js file-->
+    <script type="text/javascript" src="{% static 'blog/js/tooltip/html5tooltips.js' %}"></script>
+    <script type="text/javascript" src="{% static 'blog/js/tweetie.js' %}"></script>
+    <!--Portfolio3column js file -->
+    <script type="text/javascript" src="{% static 'blog/js/shared-hosting.js' %}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39890589-7"></script> -->
+
+    {% comment %}
+    <script type="text/javascript">
+    if (document.location.hostname.search("wagtail.michaelyin.info") !== -1) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-39890589-7');
+    }
+    </script>
+    {% endcomment %}
+  </body>
+
+</html>
+

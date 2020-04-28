@@ -1,0 +1,129 @@
+
+{% extends "blog/base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags blogapp_tags el_pagination_tags  wagtailmarkdown %}
+
+{% block title %}{{ self.title }} | {{ blog_page.title }}{% endblock title %}
+{% block meta_title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock meta_title %}
+{% block meta_description %}{% if self.search_description %}{{ self.search_description }}{% else %}{{ self.body|striptags|truncatewords:20 }}{% endif %}{% endblock meta_description %}
+{% block canonical %}{% canonical_url self%}{% endblock canonical %}
+
+{% block content %}
+
+            <div class="bg-white">
+                <div class="detail-post1-main-div">
+                    <div class="post1-heading">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <h1 class="post1-h pull-left">
+                                    {{ post.title }}
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="row news_news">
+                            <div class="col-xs-12">
+                                <ul class="list-inline">
+                                    <li>
+                                        <i class="mdi-device-access-time first-post-icon"></i>
+                                        <label class="icon-label">{{post.date|date:"j M Y"}}</label>
+                                    </li>
+                                    <li>
+                                        <i class="mdi-social-person icon-set first-post-icon"></i>
+                                        <label class="icon-label">Posted by</label>
+                                        <label class="icon-label2">
+                                            {{post.owner}}
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <i class="mdi-action-turned-in icon-set first-post-icon"></i>
+                                        <label class="icon-label2">
+                                            {% post_tags_list %}
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <!-- player 1 -->
+                            {% if post.header_image %}
+                                {% image post.header_image original as header_image %}
+                            <figure>
+                                <figcaption>
+                                    <div class="hover-btn">
+                                        <a href="{{header_image.url}}" title="" class="boxer hover-btn1 btn-h"><i class="material-icons doctor-receipt-i">visibility</i></a>
+                                        <a class="hover-btn2 btn-h"><i class="material-icons doctor-receipt-i">favorite_border</i></a>
+                                        <a class="hover-btn3 btn-h"><i class="material-icons doctor-receipt-i">receipt</i></a>
+                                    </div>
+                                </figcaption>
+                                <div class="meet-img-hover">
+                                    <img alt="" class="fancy-img  center-block img-responsive" src="{{header_image.url}}">
+                                </div>
+                            </figure>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="detail-post1-main-div">
+                    {{ post.body|markdown|safe }}
+                </div>
+                {% post_tags_list_vertical %}
+                {% for iter in self.blog_authors.all %}
+                    {% image iter.author.image fill-140x140 as img %}
+                  <div class="antonio-admin">
+                    <div class="row">
+                        <div class="col-md-2 col-xs-2 profile-userpic ">
+                            <img class="mx-auto d-block center-block" src="{{ img.url }}" alt="{{ iter.author.name }}">
+                        </div>
+                        <div class="col-md-10 col-xs-10">
+                            <h4 class="antonio-h user-comment">{{ iter.author.name }}</h4>
+                            <div class="btn-group pull-right info2">
+                                <a aria-expanded="false" href="#" data-target="#" class="# dropdown-toggle" data-toggle="dropdown">
+                                    <span class=" mdi-social-share share-icon"></span>
+                                </a>
+                                <ul class="dropdown-menu tooltiptext drop-down-img">
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/icon1.png" alt="facebook">&nbsp; facebook
+                                            <div class="ripple-container"></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/icon2.png" alt="google plus">&nbsp; google+</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="images/icon3.png" alt="twitter">&nbsp; twitter</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <p class="antonio-p">{{ iter.author.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+
+
+    {% show_comments %}
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX", "output/HTML-CSS"],
+        tex2jax: {
+          inlineMath: [['$','$']],
+          displayMath: [['$$','$$']] ,
+          processEscapes: true
+        },
+        "HTML-CSS": { availableFonts: ["TeX"] }
+      });
+    </script>
+
+    <script type="text/javascript"
+       src="//cdn.mathjax.org/mathjax/latest/MathJax.js">
+    </script>
+
+{% endblock %}

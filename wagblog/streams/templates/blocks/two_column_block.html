@@ -1,0 +1,31 @@
+<section class="shared-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-6">
+                    {% include "includes/sf_blocks.html" with blocks=self.left_column only %}
+                </div>
+                <div class="col-md-6">
+                    {% include "includes/sf_blocks.html" with blocks=self.right_column only %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+{% comment %}
+
+<div class="row {{ self.background }}">
+
+      <div class="col-md-6">
+           {% include "includes/sf_blocks.html" with blocks=self.left_column only %}
+      </div>
+      <div class="col-md-6">
+           {% include "includes/sf_blocks.html" with blocks=self.right_column only %}
+     </div>
+
+</div>
+
+{% endcomment %}

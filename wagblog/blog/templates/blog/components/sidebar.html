@@ -1,0 +1,36 @@
+{% load static wagtailcore_tags wagtailimages_tags blogapp_tags wagtailroutablepage_tags %}
+
+<div class="col-md-3">
+
+    <div class="search-input ">
+        <!-- SIDEBAR USERPIC -->
+        <div class="profile-userpic ">
+            <img src="{%  static 'blog/images/wagblog.png' %}" alt="logo" class="mx-auto d-block center-block">
+        </div>
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+                Wagblog
+            </div>
+            <div class="profile-usertitle-job">
+                Wagtail blogging made easy
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Widget -->
+    <div class="search-input">
+        <form class="hosting blog_hs" method="get" class="form-search" action="{% routablepageurl blog_page "post_search" %}" >
+            <div class="form-group label-floating">
+                <label class="control-label" for="search">Search</label>
+                <input class="form-control input-padd" name="q" title="Search for:" type="text" required="required">
+            </div>
+            <i class="fa fa-search pull-right adj-icon"></i>
+        </form>
+    </div>
+
+
+    {% categories_list %}
+
+    {% tags_list %}
+
+</div>
