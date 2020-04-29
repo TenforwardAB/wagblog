@@ -84,18 +84,18 @@
                                 </a>
                                 <ul class="dropdown-menu tooltiptext drop-down-img">
                                     <li>
-                                        <a href="#">
-                                            <img src="images/icon1.png" alt="facebook">&nbsp; facebook
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u={% canonical_url self%}" target="_blank">
+                                            <img src="{% static  'images/icons/icon1.png'%}" alt="facebook">&nbsp; facebook
                                             <div class="ripple-container"></div>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <img src="images/icon2.png" alt="google plus">&nbsp; google+</a>
+                                        <a href="https://twitter.com/share?text={{ post.title }}&url={% canonical_url self%}" target="_blank">
+                                            <img src="{% static  'images/icons/icon3.png'%}" alt="twitter">&nbsp; twitter</a>
                                     </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="images/icon3.png" alt="twitter">&nbsp; twitter</a>
+                                     <li>
+                                        <a href="https://telegram.me/share/url?url={% canonical_url self%}&text={{ post.title }}" target="_blank">
+                                            <img src="{% static  'images/icons/icon7.png'%}" alt="twitter">&nbsp; telegram</a>
                                     </li>
                                 </ul>
                             </div>
