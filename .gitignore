@@ -65,3 +65,4 @@ target/
 
 # Env
 .env
+.envrc
