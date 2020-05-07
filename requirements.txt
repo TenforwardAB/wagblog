@@ -33,7 +33,7 @@ six==1.14.0
 sqlparse==0.3.0
 Unidecode==1.1.1
 urllib3==1.25.7
-wagtail==2.8.1
+wagtail==2.8.2
 wagtail-tag-manager==0.21.4
 wagtailfontawesome==1.1.4
 wagtailmenus==3.0
