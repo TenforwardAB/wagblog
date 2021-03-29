@@ -23,7 +23,7 @@ libsass==0.19.4
 Markdown==3.1.1
 Pillow==6.2.2
 pkg-resources==0.0.0
-Pygments==2.5.2
+Pygments==2.7.4
 pytz==2019.3
 rcssmin==1.0.6
 requests==2.22.0
